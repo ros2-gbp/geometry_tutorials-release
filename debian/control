@@ -1,0 +1,12 @@
+Source: ros-hydro-geometry-tutorials
+Section: misc
+Priority: extra
+Maintainer: "William Woodall <william@osrfoundation.org>"
+Build-Depends: debhelper (>= 7.0.50~), ros-hydro-catkin
+Homepage: http://www.ros.org/wiki/geometry_tutorials
+Standards-Version: 3.9.2
+
+Package: ros-hydro-geometry-tutorials
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-turtle-tf
+Description: Metapackage of geometry tutorials ROS.
