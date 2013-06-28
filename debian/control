@@ -1,0 +1,12 @@
+Source: ros-hydro-turtle-tf
+Section: misc
+Priority: extra
+Maintainer: "William Woodall <william@osrfoundation.org>"
+Build-Depends: debhelper (>= 7.0.50~), ros-hydro-catkin, ros-hydro-geometry-msgs, ros-hydro-roscpp, ros-hydro-rospy, ros-hydro-std-msgs, ros-hydro-tf, ros-hydro-turtlesim
+Homepage: http://ros.org/wiki/turtle_tf
+Standards-Version: 3.9.2
+
+Package: ros-hydro-turtle-tf
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-geometry-msgs, ros-hydro-roscpp, ros-hydro-rospy, ros-hydro-std-msgs, ros-hydro-tf, ros-hydro-turtlesim
+Description: turtle_tf demonstrates how to write a tf broadcaster and listener with the turtlesim. The tutle_tf_listener commands turtle2 to follow turtle1 around as you drive turtle1 using the keyboard.
