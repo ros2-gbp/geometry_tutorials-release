@@ -49,13 +49,13 @@ if __name__ == '__main__':
     spawner = rospy.ServiceProxy('spawn', turtlesim.srv.Spawn)
     spawner(4, 2, 0, 'turtle2')
 
-    turtle_vel = rospy.Publisher('turtle2/cmd_vel', geometry_msgs.msg.Twist)
+    turtle_vel = rospy.Publisher('turtle2/cmd_vel', geometry_msgs.msg.Twist, queue_size=1)
 
     rate = rospy.Rate(10.0)
     while not rospy.is_shutdown():
         try:
             (trans, rot) = listener.lookupTransform('/turtle2', '/turtle1', rospy.Time())
-        except (tf.LookupException, tf.ConnectivityException):
+        except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
             continue
 
         angular = 4 * math.atan2(trans[1], trans[0])
