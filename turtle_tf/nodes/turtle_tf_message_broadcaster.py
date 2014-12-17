@@ -53,7 +53,7 @@ class PointPublisher:
                                     turtlesim.msg.Pose,
                                     self.handle_turtle_pose,
                                     self.turtlename)
-        self.pub = rospy.Publisher('turtle_point_stamped', PointStamped)
+        self.pub = rospy.Publisher('turtle_point_stamped', PointStamped, queue_size=1)
 
 if __name__ == '__main__':
     rospy.init_node('tf_turtle_stamped_msg_publisher')
@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
     pp = PointPublisher()
 
-    pub = rospy.Publisher("turtle3/cmd_vel", geometry_msgs.msg.Twist)
+    pub = rospy.Publisher("turtle3/cmd_vel", geometry_msgs.msg.Twist, queue_size=1)
     while not rospy.is_shutdown():
         msg = geometry_msgs.msg.Twist()
         msg.linear.x = 1
