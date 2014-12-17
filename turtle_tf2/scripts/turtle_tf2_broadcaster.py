@@ -30,39 +30,43 @@
 # LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
+#!/usr/bin/env python
 
 import roslib
-roslib.load_manifest('turtle_tf')
+roslib.load_manifest('turtle_tf2')
 import rospy
 
-import math
+# Because of transformations
 import tf
+
+import tf2_ros
 import geometry_msgs.msg
-import turtlesim.srv
+import turtlesim.msg
+
+
+def handle_turtle_pose(msg, turtlename):
+    br = tf2_ros.TransformBroadcaster()
+    t = geometry_msgs.msg.TransformStamped()
+    
+    t.header.stamp = rospy.Time.now()
+    t.header.frame_id = "world"
+    t.child_frame_id = turtlename
+    t.transform.translation.x = msg.x
+    t.transform.translation.y = msg.y
+    t.transform.translation.z = 0.0
+    q = tf.transformations.quaternion_from_euler(0, 0, msg.theta)
+    t.transform.rotation.x = q[0]
+    t.transform.rotation.y = q[1]
+    t.transform.rotation.z = q[2]
+    t.transform.rotation.w = q[3]
+    
+    br.sendTransform(t)
 
 if __name__ == '__main__':
     rospy.init_node('tf_turtle')
-
-    listener = tf.TransformListener()
-
-    rospy.wait_for_service('spawn')
-    spawner = rospy.ServiceProxy('spawn', turtlesim.srv.Spawn)
-    spawner(4, 2, 0, 'turtle2')
-
-    turtle_vel = rospy.Publisher('turtle2/cmd_vel', geometry_msgs.msg.Twist, queue_size=1)
-
-    rate = rospy.Rate(10.0)
-    while not rospy.is_shutdown():
-        try:
-            (trans, rot) = listener.lookupTransform('/turtle2', '/turtle1', rospy.Time())
-        except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
-            continue
-
-        angular = 4 * math.atan2(trans[1], trans[0])
-        linear = 0.5 * math.sqrt(trans[0] ** 2 + trans[1] ** 2)
-        msg = geometry_msgs.msg.Twist()
-        msg.linear.x = linear
-        msg.angular.z = angular
-        turtle_vel.publish(msg)
-
-        rate.sleep()
+    turtlename = rospy.get_param('~turtle')
+    rospy.Subscriber('/%s/pose' % turtlename,
+                     turtlesim.msg.Pose,
+                     handle_turtle_pose,
+                     turtlename)
+    rospy.spin()
