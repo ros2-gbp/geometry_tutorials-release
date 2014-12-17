@@ -32,18 +32,19 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 import roslib
-roslib.load_manifest('turtle_tf')
+roslib.load_manifest('turtle_tf2')
 import rospy
 
 import math
-import tf
+import tf2_ros
 import geometry_msgs.msg
 import turtlesim.srv
 
 if __name__ == '__main__':
-    rospy.init_node('tf_turtle')
+    rospy.init_node('tf2_turtle')
 
-    listener = tf.TransformListener()
+    tfBuffer = tf2_ros.Buffer()
+    listener = tf2_ros.TransformListener(tfBuffer)
 
     rospy.wait_for_service('spawn')
     spawner = rospy.ServiceProxy('spawn', turtlesim.srv.Spawn)
@@ -54,12 +55,12 @@ if __name__ == '__main__':
     rate = rospy.Rate(10.0)
     while not rospy.is_shutdown():
         try:
-            (trans, rot) = listener.lookupTransform('/turtle2', '/turtle1', rospy.Time())
-        except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
+            trans = tfBuffer.lookup_transform('turtle2', 'turtle1', rospy.Time.now(), rospy.Duration(1.0))
+        except tf2_ros.Exception:
             continue
 
-        angular = 4 * math.atan2(trans[1], trans[0])
-        linear = 0.5 * math.sqrt(trans[0] ** 2 + trans[1] ** 2)
+        angular = 4 * math.atan2(trans.transform.translation.y, trans.transform.translation.x)
+        linear = 0.5 * math.sqrt(trans.transform.translation.x ** 2 + trans.transform.translation.y ** 2)
         msg = geometry_msgs.msg.Twist()
         msg.linear.x = linear
         msg.angular.z = angular

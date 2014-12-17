@@ -32,37 +32,40 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 import roslib
-roslib.load_manifest('turtle_tf')
+roslib.load_manifest('turtle_tf2')
 import rospy
 
 import math
-import tf
+import tf2_ros
 import geometry_msgs.msg
 import turtlesim.srv
 
 if __name__ == '__main__':
-    rospy.init_node('tf_turtle')
+    rospy.init_node('tf2_turtle')
 
-    listener = tf.TransformListener()
+    tfBuffer = tf2_ros.Buffer()
+    listener = tf2_ros.TransformListener(tfBuffer)
 
     rospy.wait_for_service('spawn')
     spawner = rospy.ServiceProxy('spawn', turtlesim.srv.Spawn)
-    spawner(4, 2, 0, 'turtle2')
+    turtle_name = rospy.get_param('turtle', 'turtle2')
+    spawner(4, 2, 0, turtle_name)
 
-    turtle_vel = rospy.Publisher('turtle2/cmd_vel', geometry_msgs.msg.Twist, queue_size=1)
+    turtle_vel = rospy.Publisher('%s/cmd_vel' % turtle_name, geometry_msgs.msg.Twist, queue_size=1)
 
     rate = rospy.Rate(10.0)
     while not rospy.is_shutdown():
         try:
-            (trans, rot) = listener.lookupTransform('/turtle2', '/turtle1', rospy.Time())
-        except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
+            trans = tfBuffer.lookup_transform(turtle_name, 'turtle1', rospy.Time())
+        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
+            rate.sleep()
             continue
 
-        angular = 4 * math.atan2(trans[1], trans[0])
-        linear = 0.5 * math.sqrt(trans[0] ** 2 + trans[1] ** 2)
         msg = geometry_msgs.msg.Twist()
-        msg.linear.x = linear
-        msg.angular.z = angular
+        
+        msg.angular.z = 4 * math.atan2(trans.transform.translation.y, trans.transform.translation.x)
+        msg.linear.x = 0.5 * math.sqrt(trans.transform.translation.x ** 2 + trans.transform.translation.y ** 2)
+
         turtle_vel.publish(msg)
 
         rate.sleep()
