@@ -32,37 +32,41 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 import roslib
-roslib.load_manifest('turtle_tf')
-import rospy
+roslib.load_manifest('turtle_tf2')
 
-import math
-import tf
+import rospy
+import tf2_ros
+import tf2_msgs.msg
 import geometry_msgs.msg
-import turtlesim.srv
+
+
+class FixedTFBroadcaster:
+
+    def __init__(self):
+        self.pub_tf = rospy.Publisher("/tf", tf2_msgs.msg.TFMessage, queue_size=1)
+
+        while not rospy.is_shutdown():
+            # Run this loop at about 10Hz
+            rospy.sleep(0.1)
+
+            t = geometry_msgs.msg.TransformStamped()
+            t.header.frame_id = "turtle1"
+            t.header.stamp = rospy.Time.now()
+            t.child_frame_id = "carrot1"
+            t.transform.translation.x = 0.0
+            t.transform.translation.y = 2.0
+            t.transform.translation.z = 0.0
+
+            t.transform.rotation.x = 0.0
+            t.transform.rotation.y = 0.0
+            t.transform.rotation.z = 0.0
+            t.transform.rotation.w = 1.0
+
+            tfm = tf2_msgs.msg.TFMessage([t])
+            self.pub_tf.publish(tfm)
 
 if __name__ == '__main__':
-    rospy.init_node('tf_turtle')
+    rospy.init_node('my_tf2_broadcaster')
+    tfb = FixedTFBroadcaster()
 
-    listener = tf.TransformListener()
-
-    rospy.wait_for_service('spawn')
-    spawner = rospy.ServiceProxy('spawn', turtlesim.srv.Spawn)
-    spawner(4, 2, 0, 'turtle2')
-
-    turtle_vel = rospy.Publisher('turtle2/cmd_vel', geometry_msgs.msg.Twist, queue_size=1)
-
-    rate = rospy.Rate(10.0)
-    while not rospy.is_shutdown():
-        try:
-            (trans, rot) = listener.lookupTransform('/turtle2', '/turtle1', rospy.Time())
-        except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
-            continue
-
-        angular = 4 * math.atan2(trans[1], trans[0])
-        linear = 0.5 * math.sqrt(trans[0] ** 2 + trans[1] ** 2)
-        msg = geometry_msgs.msg.Twist()
-        msg.linear.x = linear
-        msg.angular.z = angular
-        turtle_vel.publish(msg)
-
-        rate.sleep()
+    rospy.spin()
