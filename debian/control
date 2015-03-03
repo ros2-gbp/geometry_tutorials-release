@@ -1,0 +1,12 @@
+Source: ros-indigo-turtle-tf2
+Section: misc
+Priority: extra
+Maintainer: Denis Štogl <denis.stogl@mailbox.org>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin, ros-indigo-geometry-msgs, ros-indigo-roscpp, ros-indigo-rospy, ros-indigo-std-msgs, ros-indigo-tf2, ros-indigo-tf2-ros, ros-indigo-turtlesim
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-indigo-turtle-tf2
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-geometry-msgs, ros-indigo-roscpp, ros-indigo-rospy, ros-indigo-std-msgs, ros-indigo-tf2, ros-indigo-tf2-ros, ros-indigo-turtlesim
+Description: turtle_tf2 demonstrates how to write a tf2 broadcaster and listener with the turtlesim. The tutle_tf2_listener commands turtle2 to follow turtle1 around as you drive turtle1 using the keyboard.
