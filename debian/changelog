@@ -1,0 +1,22 @@
+ros-indigo-geometry-tutorials (0.2.2-0trusty) trusty; urgency=high
+
+
+
+ -- William Woodall <william@osrfoundation.org>  Tue, 03 Mar 2015 08:00:00 -0000
+
+ros-indigo-geometry-tutorials (0.2.1-0trusty) trusty; urgency=high
+
+  * Added new tutorial for tf2
+  * Contributors: Denis Štogl
+
+ -- William Woodall <william@osrfoundation.org>  Wed, 17 Dec 2014 08:00:00 -0000
+
+ros-indigo-geometry-tutorials (0.2.0-0trusty) trusty; urgency=high
+
+  * Cleaned up build system and package.xml
+  * geometry_tutorials) Catkinized. Added metapackage.
+  * Contributors: Isaac Saito, William Woodall
+
+ -- William Woodall <william@osrfoundation.org>  Fri, 28 Jun 2013 07:00:00 -0000
+
+
