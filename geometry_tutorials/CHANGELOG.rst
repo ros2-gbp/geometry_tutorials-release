@@ -2,6 +2,9 @@
 Changelog for package geometry_tutorials
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.2.2 (2015-03-03)
+------------------
+
 0.2.1 (2014-12-17)
 ------------------
 * Added new tutorial for tf2
