@@ -30,43 +30,53 @@
 # LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
-#!/usr/bin/env python
 
-import roslib
-roslib.load_manifest('turtle_tf2')
 import rospy
-
-# Because of transformations
-import tf
-
 import tf2_ros
 import geometry_msgs.msg
-import turtlesim.msg
+import math
 
-
-def handle_turtle_pose(msg, turtlename):
+if __name__ == '__ STATIC main__':
+    rospy.init_node('my_tf2_broadcaster')
     br = tf2_ros.TransformBroadcaster()
     t = geometry_msgs.msg.TransformStamped()
-    
-    t.header.stamp = rospy.Time.now()
-    t.header.frame_id = "world"
-    t.child_frame_id = turtlename
-    t.transform.translation.x = msg.x
-    t.transform.translation.y = msg.y
+
+    t.header.frame_id = "turtle1"
+    t.child_frame_id = "carrot1"
+    t.transform.translation.x = 0.0
+    t.transform.translation.y = 2.0
     t.transform.translation.z = 0.0
-    q = tf.transformations.quaternion_from_euler(0, 0, msg.theta)
-    t.transform.rotation.x = q[0]
-    t.transform.rotation.y = q[1]
-    t.transform.rotation.z = q[2]
-    t.transform.rotation.w = q[3]
-    
-    br.sendTransform(t)
+    t.transform.rotation.x = 0.0
+    t.transform.rotation.y = 0.0
+    t.transform.rotation.z = 0.0
+    t.transform.rotation.w = 1.0
+
+    rate = rospy.Rate(10.0)
+    while not rospy.is_shutdown():
+        t.header.stamp = rospy.Time.now()
+        br.sendTransform(t)
+        rate.sleep()
 
 if __name__ == '__main__':
-    rospy.init_node('tf_turtle')
-    turtlename = rospy.get_param('~turtle')
-    rospy.Subscriber('/%s/pose' % turtlename,
-                     turtlesim.msg.Pose,
-                     handle_turtle_pose,
-                     turtlename)
-    rospy.spin()
+    rospy.init_node('my_tf2_broadcaster')
+    br = tf2_ros.TransformBroadcaster()
+    t = geometry_msgs.msg.TransformStamped()
+
+    t.header.frame_id = "turtle1"
+    t.child_frame_id = "carrot1"
+
+    rate = rospy.Rate(10.0)
+    while not rospy.is_shutdown():
+        x = rospy.Time.now().to_sec() * math.pi
+
+        t.header.stamp = rospy.Time.now()
+        t.transform.translation.x = 10 * math.sin(x)
+        t.transform.translation.y = 10 * math.cos(x)
+        t.transform.translation.z = 0.0
+        t.transform.rotation.x = 0.0
+        t.transform.rotation.y = 0.0
+        t.transform.rotation.z = 0.0
+        t.transform.rotation.w = 1.0
+
+        br.sendTransform(t)
+        rate.sleep()
