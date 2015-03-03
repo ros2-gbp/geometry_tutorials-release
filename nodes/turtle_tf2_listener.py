@@ -30,43 +30,40 @@
 # LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
-#!/usr/bin/env python
 
-import roslib
-roslib.load_manifest('turtle_tf2')
 import rospy
 
-import turtlesim.msg
+import math
+import tf2_ros
 import geometry_msgs.msg
 import turtlesim.srv
-from geometry_msgs.msg import PointStamped, Point
-from std_msgs.msg import Header
-
-
-class PointPublisher:
-    def handle_turtle_pose(self, msg, turtlename):
-        self.pub.publish(PointStamped(Header(0, rospy.rostime.get_rostime(), "/world"), Point(msg.x, msg.y, 0)))
-
-    def __init__(self):
-        self.turtlename = "turtle3"  # rospy.get_param('~turtle')
-        self.sub = rospy.Subscriber('/%s/pose' % self.turtlename,
-                                    turtlesim.msg.Pose,
-                                    self.handle_turtle_pose,
-                                    self.turtlename)
-        self.pub = rospy.Publisher('turtle_point_stamped', PointStamped, queue_size=1)
 
 if __name__ == '__main__':
-    rospy.init_node('tf2_turtle_stamped_msg_publisher')
+    rospy.init_node('tf2_turtle')
+
+    tfBuffer = tf2_ros.Buffer()
+    listener = tf2_ros.TransformListener(tfBuffer)
+
     rospy.wait_for_service('spawn')
     spawner = rospy.ServiceProxy('spawn', turtlesim.srv.Spawn)
-    spawner(4, 2, 0, 'turtle3')
+    turtle_name = rospy.get_param('turtle', 'turtle2')
+    spawner(4, 2, 0, turtle_name)
 
-    pp = PointPublisher()
+    turtle_vel = rospy.Publisher('%s/cmd_vel' % turtle_name, geometry_msgs.msg.Twist, queue_size=1)
 
-    pub = rospy.Publisher("turtle3/cmd_vel", geometry_msgs.msg.Twist, queue_size=1)
+    rate = rospy.Rate(10.0)
     while not rospy.is_shutdown():
+        try:
+            trans = tfBuffer.lookup_transform(turtle_name, 'turtle1', rospy.Time())
+        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
+            rate.sleep()
+            continue
+
         msg = geometry_msgs.msg.Twist()
-        msg.linear.x = 1
-        msg.angular.z = 1
-        pub.publish(msg)
-        rospy.sleep(rospy.Duration(0.1))
+
+        msg.angular.z = 4 * math.atan2(trans.transform.translation.y, trans.transform.translation.x)
+        msg.linear.x = 0.5 * math.sqrt(trans.transform.translation.x ** 2 + trans.transform.translation.y ** 2)
+
+        turtle_vel.publish(msg)
+
+        rate.sleep()
