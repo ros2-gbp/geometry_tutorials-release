@@ -1,3 +1,27 @@
+## geometry_tutorials (indigo) - 0.2.2-0
+
+The packages in the `geometry_tutorials` repository were released into the `indigo` distro by running `/usr/bin/bloom-release -t indigo -r indigo geometry_tutorials` on `Tue, 03 Mar 2015 08:34:04 -0000`
+
+These packages were released:
+- `geometry_tutorials`
+- `turtle_tf`
+- `turtle_tf2`
+
+Version of package(s) in repository `geometry_tutorials`:
+- upstream repository: https://github.com/ros/geometry_tutorials
+- release repository: https://github.com/ros-gbp/geometry_tutorials-release.git
+- rosdistro version: `0.2.1-0`
+- old version: `0.2.1-0`
+- new version: `0.2.2-0`
+
+Versions of tools used:
+- bloom version: `0.5.19`
+- catkin_pkg version: `0.2.7`
+- rosdep version: `0.11.2`
+- rosdistro version: `0.4.1`
+- vcstools version: `0.1.36`
+
+
 ## geometry_tutorials (indigo) - 0.2.1-0
 
 The packages in the `geometry_tutorials` repository were released into the `indigo` distro by running `/usr/bin/bloom-release geometry_tutorials -t indigo -r indigo --edit` on `Wed, 17 Dec 2014 22:39:45 -0000`
