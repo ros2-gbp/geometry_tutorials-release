@@ -1,0 +1,12 @@
+Source: ros-jade-geometry-tutorials
+Section: misc
+Priority: extra
+Maintainer: William Woodall <william@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-jade-catkin
+Homepage: http://www.ros.org/wiki/geometry_tutorials
+Standards-Version: 3.9.2
+
+Package: ros-jade-geometry-tutorials
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jade-turtle-tf, ros-jade-turtle-tf2
+Description: Metapackage of geometry tutorials ROS.
