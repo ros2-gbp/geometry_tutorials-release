@@ -1,0 +1,13 @@
+Source: ros-kinetic-turtle-tf
+Section: misc
+Priority: extra
+Maintainer: William Woodall <william@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-catkin, ros-kinetic-geometry-msgs, ros-kinetic-roscpp, ros-kinetic-rospy, ros-kinetic-std-msgs, ros-kinetic-tf, ros-kinetic-turtlesim
+Homepage: http://ros.org/wiki/turtle_tf
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-turtle-tf
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kinetic-geometry-msgs, ros-kinetic-roscpp, ros-kinetic-rospy, ros-kinetic-std-msgs, ros-kinetic-tf, ros-kinetic-turtlesim
+Description: turtle_tf demonstrates how to write a tf broadcaster and listener with the turtlesim.
+ The tutle_tf_listener commands turtle2 to follow turtle1 around as you drive turtle1 using the keyboard.
