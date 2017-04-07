@@ -1,3 +1,29 @@
+## geometry_tutorials (lunar) - 0.2.2-0
+
+The packages in the `geometry_tutorials` repository were released into the `lunar` distro by running `/usr/bin/bloom-release -t lunar -r lunar geometry_tutorials` on `Fri, 07 Apr 2017 17:57:36 -0000`
+
+These packages were released:
+- `geometry_tutorials`
+- `turtle_tf`
+- `turtle_tf2`
+
+Version of package(s) in repository `geometry_tutorials`:
+
+- upstream repository: https://github.com/ros/geometry_tutorials
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `0.2.2-0`
+
+Versions of tools used:
+
+- bloom version: `0.5.25`
+- catkin_pkg version: `0.3.1`
+- rosdep version: `0.11.5`
+- rosdistro version: `0.6.1`
+- vcstools version: `0.1.39`
+
+
 ## geometry_tutorials (kinetic) - 0.2.2-0
 
 The packages in the `geometry_tutorials` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release -t kinetic -r kinetic --new-track geometry_tutorials` on `Thu, 07 Apr 2016 23:14:03 -0000`
