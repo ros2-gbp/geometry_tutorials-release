@@ -1,0 +1,12 @@
+Source: ros-melodic-geometry-tutorials
+Section: misc
+Priority: extra
+Maintainer: William Woodall <william@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-melodic-catkin
+Homepage: http://www.ros.org/wiki/geometry_tutorials
+Standards-Version: 3.9.2
+
+Package: ros-melodic-geometry-tutorials
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-melodic-turtle-tf, ros-melodic-turtle-tf2
+Description: Metapackage of geometry tutorials ROS.
