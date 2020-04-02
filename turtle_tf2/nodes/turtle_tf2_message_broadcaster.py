@@ -43,7 +43,7 @@ from std_msgs.msg import Header
 
 class PointPublisher:
     def handle_turtle_pose(self, msg, turtlename):
-        self.pub.publish(PointStamped(Header(0, rospy.rostime.get_rostime(), "/world"), Point(msg.x, msg.y, 0)))
+        self.pub.publish(PointStamped(Header(0, rospy.rostime.get_rostime(), "world"), Point(msg.x, msg.y, 0)))
 
     def __init__(self):
         self.turtlename = "turtle3"  # rospy.get_param('~turtle')
@@ -54,7 +54,7 @@ class PointPublisher:
         self.pub = rospy.Publisher('turtle_point_stamped', PointStamped, queue_size=1)
 
 if __name__ == '__main__':
-    rospy.init_node('tf2_turtle_stamped_msg_publisher')
+    rospy.init_node('turtle_tf2_msg_broadcaster')
     rospy.wait_for_service('spawn')
     spawner = rospy.ServiceProxy('spawn', turtlesim.srv.Spawn)
     spawner(4, 2, 0, 'turtle3')

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0.2)
 project(turtle_tf)
 
 ## Find dependencies
@@ -45,7 +45,7 @@ install(PROGRAMS
 )
 
 ## Install C++ Examples
-install(TARGETS turtle_tf_broadcaster turtle_tf_listener turtle_tf_listener_debug
+install(TARGETS turtle_tf_broadcaster turtle_tf_listener turtle_tf_message_filter turtle_tf_listener_debug
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
