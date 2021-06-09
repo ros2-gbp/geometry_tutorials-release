@@ -1,3 +1,28 @@
+## geometry_tutorials (rolling) - 0.0.1-1
+
+The packages in the `geometry_tutorials` repository were released into the `rolling` distro by running `/usr/bin/bloom-release -e --rosdistro rolling --track rolling geometry_tutorials` on `Wed, 09 Jun 2021 14:09:20 -0000`
+
+These packages were released:
+- `geometry_tutorials`
+- `turtle_tf2_py`
+
+Version of package(s) in repository `geometry_tutorials`:
+
+- upstream repository: https://github.com/ros/geometry_tutorials
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `0.0.1-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.7`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.20.1`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## geometry_tutorials (noetic) - 0.2.3-1
 
 The packages in the `geometry_tutorials` repository were released into the `noetic` distro by running `/usr/bin/bloom-release geometry_tutorials --rosdistro noetic` on `Thu, 02 Apr 2020 08:33:41 -0000`
