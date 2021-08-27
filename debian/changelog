@@ -1,9 +1,0 @@
-ros-rolling-turtle-tf2-cpp (0.3.2-1focal) focal; urgency=high
-
-  * turtle_tf2_cpp tutorial package (#44 <https://github.com/ros/geometry_tutorials/issues/44>)
-    Co-authored-by: Alejandro Hernández Cordero <mailto:ahcorde@gmail.com>
-  * Contributors: kurshakuz
-
- -- Alejandro Hernández Cordero <alejandro@openrobotics.org>  Sun, 08 Aug 2021 22:00:00 -0000
-
-
