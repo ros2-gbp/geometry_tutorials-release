@@ -20,7 +20,7 @@ tracks:
     name: geometry_tutorials
     patches: null
     release_inc: '1'
-    release_repo_url: https://github.com/ros-gbp/geometry_tutorials-release.git
+    release_repo_url: https://github.com/ros2-gbp/geometry_tutorials-release.git
     release_tag: :{version}
     ros_distro: foxy
     vcs_type: git
@@ -46,7 +46,7 @@ tracks:
     name: geometry_tutorials
     patches: null
     release_inc: '1'
-    release_repo_url: https://github.com/ros-gbp/geometry_tutorials-release.git
+    release_repo_url: https://github.com/ros2-gbp/geometry_tutorials-release.git
     release_tag: :{version}
     ros_distro: galactic
     vcs_type: git
@@ -72,7 +72,7 @@ tracks:
     name: geometry_tutorials
     patches: null
     release_inc: '3'
-    release_repo_url: https://github.com/ros-gbp/geometry_tutorials-release.git
+    release_repo_url: https://github.com/ros2-gbp/geometry_tutorials-release.git
     release_tag: :{version}
     ros_distro: humble
     vcs_type: git
@@ -260,7 +260,7 @@ tracks:
     name: geometry_tutorials
     patches: null
     release_inc: '2'
-    release_repo_url: https://github.com/ros-gbp/geometry_tutorials-release.git
+    release_repo_url: https://github.com/ros2-gbp/geometry_tutorials-release.git
     release_tag: :{version}
     ros_distro: rolling
     vcs_type: git
