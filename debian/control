@@ -1,0 +1,13 @@
+Source: ros-rolling-turtle-tf2-cpp
+Section: misc
+Priority: optional
+Maintainer: Alejandro Hernández Cordero <alejandro@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-rolling-ament-cmake, ros-rolling-ament-lint-auto <!nocheck>, ros-rolling-ament-lint-common <!nocheck>, ros-rolling-geometry-msgs, ros-rolling-launch, ros-rolling-launch-ros, ros-rolling-message-filters, ros-rolling-rclcpp, ros-rolling-tf2, ros-rolling-tf2-geometry-msgs, ros-rolling-tf2-ros, ros-rolling-turtlesim, ros-rolling-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-rolling-turtle-tf2-cpp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-rolling-geometry-msgs, ros-rolling-launch, ros-rolling-launch-ros, ros-rolling-message-filters, ros-rolling-rclcpp, ros-rolling-tf2, ros-rolling-tf2-geometry-msgs, ros-rolling-tf2-ros, ros-rolling-turtlesim, ros-rolling-ros-workspace
+Description: turtle_tf2_cpp demonstrates how to write a ROS2 C++ tf2 broadcaster and listener with the turtlesim.
+ The turtle_tf2_listener commands turtle2 to follow turtle1 around as you drive turtle1 using the keyboard.
