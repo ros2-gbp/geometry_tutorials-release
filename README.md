@@ -1,3 +1,29 @@
+## geometry_tutorials (jazzy) - 0.5.0-1
+
+The packages in the `geometry_tutorials` repository were released into the `jazzy` distro by running `/usr/bin/bloom-release --rosdistro jazzy --track jazzy geometry_tutorials` on `Wed, 10 Jul 2024 09:23:38 -0000`
+
+These packages were released:
+- `geometry_tutorials`
+- `turtle_tf2_cpp`
+- `turtle_tf2_py`
+
+Version of package(s) in repository `geometry_tutorials`:
+
+- upstream repository: https://github.com/ros/geometry_tutorials
+- release repository: https://github.com/ros2-gbp/geometry_tutorials-release.git
+- rosdistro version: `0.3.6-5`
+- old version: `0.3.6-5`
+- new version: `0.5.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.12.0`
+- catkin_pkg version: `0.5.2`
+- rosdep version: `0.24.0`
+- rosdistro version: `0.9.1`
+- vcstools version: `0.1.42`
+
+
 ## geometry_tutorials (iron) - 0.4.0-1
 
 The packages in the `geometry_tutorials` repository were released into the `iron` distro by running `/usr/bin/bloom-release --rosdistro iron --track iron geometry_tutorials` on `Wed, 10 Jul 2024 09:19:19 -0000`
