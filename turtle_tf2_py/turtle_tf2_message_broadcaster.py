@@ -18,8 +18,8 @@ from geometry_msgs.msg import Twist
 import rclpy
 from rclpy.node import Node
 
-from turtlesim.msg import Pose
-from turtlesim.srv import Spawn
+from turtlesim_msgs.msg import Pose
+from turtlesim_msgs.srv import Spawn
 
 
 class PointPublisher(Node):
@@ -53,12 +53,12 @@ class PointPublisher(Node):
         else:
             if self.spawner.service_is_ready():
                 # Initialize request with turtle name and coordinates
-                # Note that x, y and theta are defined as floats in turtlesim/srv/Spawn
+                # Note that x, y and theta are defined as floats in turtlesim_msgs/srv/Spawn
                 request = Spawn.Request()
                 request.name = 'turtle3'
-                request.x = float(4)
-                request.y = float(2)
-                request.theta = float(0)
+                request.x = 4.0
+                request.y = 2.0
+                request.theta = 0.0
                 # Call request
                 self.result = self.spawner.call_async(request)
                 self.turtle_spawning_service_ready = True
