@@ -2,8 +2,15 @@
 Changelog for package turtle_tf2_cpp
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.5.0 (2024-07-10)
+0.6.1 (2024-07-16)
 ------------------
+* Clean rolling CI (`#82 <https://github.com/ros/geometry_tutorials/issues/82>`_)
+* Use target_link_libraries (`#83 <https://github.com/ros/geometry_tutorials/issues/83>`_)
+* Contributors: Alejandro Hernández Cordero
+
+0.6.0 (2024-07-10)
+------------------
+* Used turtlesim_msgs (`#78 <https://github.com/ros/geometry_tutorials/issues/78>`_)
 * Migrate std::bind calls to lambda expressions (`#76 <https://github.com/ros/geometry_tutorials/issues/76>`_)
   * ♻️ Geometry msgs lambda refactor
   Co-authored-by: Chris Lalancette <clalancette@gmail.com>
@@ -11,7 +18,7 @@ Changelog for package turtle_tf2_cpp
   1.  Remove dependencies from the targets that don't need them.
   2.  Remove a totally unnecessary typedef.
   3.  Remove unnecessary casts to float.
-* Contributors: Chris Lalancette, Felipe Gomes de Melo
+* Contributors: Alejandro Hernández Cordero, Chris Lalancette, Felipe Gomes de Melo
 
 0.3.6 (2022-09-15)
 ------------------
