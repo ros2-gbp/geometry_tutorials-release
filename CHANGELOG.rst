@@ -2,6 +2,11 @@
 Changelog for package turtle_tf2_cpp
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.2 (2024-07-19)
+------------------
+* Updated deprecated message filter headers (`#84 <https://github.com/ros/geometry_tutorials/issues/84>`_)
+* Contributors: Alejandro Hernández Cordero
+
 0.6.1 (2024-07-16)
 ------------------
 * Clean rolling CI (`#82 <https://github.com/ros/geometry_tutorials/issues/82>`_)
