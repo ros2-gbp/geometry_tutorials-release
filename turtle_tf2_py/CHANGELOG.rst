@@ -2,10 +2,10 @@
 Changelog for package turtle_tf2_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.7.0 (2025-05-05)
+0.6.4 (2025-05-05)
 ------------------
-* Fix incorrect srv import (`#88 <https://github.com/ros/geometry_tutorials/issues/88>`_)
-* Contributors: suchetanrs
+* Fix incorrect srv import (backport `#88 <https://github.com/ros/geometry_tutorials/issues/88>`_) (`#90 <https://github.com/ros/geometry_tutorials/issues/90>`_)
+* Contributors: mergify[bot]
 
 0.6.3 (2024-12-27)
 ------------------
