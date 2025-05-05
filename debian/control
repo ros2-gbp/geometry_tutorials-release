@@ -1,0 +1,13 @@
+Source: ros-kilted-turtle-tf2-py
+Section: misc
+Priority: optional
+Maintainer: Alejandro Hernández Cordero <alejandro@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest <!nocheck>, ros-kilted-ament-copyright <!nocheck>, ros-kilted-ament-flake8 <!nocheck>, ros-kilted-ament-pep257 <!nocheck>, ros-kilted-ros-workspace, python3-all, python3-setuptools, dh-python
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-kilted-turtle-tf2-py
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, python3-numpy, ros-kilted-geometry-msgs, ros-kilted-launch, ros-kilted-launch-ros, ros-kilted-rclpy, ros-kilted-tf2-ros, ros-kilted-turtlesim-msgs, ros-kilted-ros-workspace
+Description: turtle_tf2_py demonstrates how to write a ROS2 Python tf2 broadcaster and listener with the turtlesim.
+ The turtle_tf2_listener commands turtle2 to follow turtle1 around as you drive turtle1 using the keyboard.
