@@ -1,0 +1,12 @@
+Source: ros-lyrical-geometry-tutorials
+Section: misc
+Priority: optional
+Maintainer: Alejandro Hernández Cordero <alejandro@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-ament-cmake, ros-lyrical-ros-workspace
+Homepage: http://www.ros.org/wiki/geometry_tutorials
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-geometry-tutorials
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lyrical-ros-workspace
+Description: Metapackage of geometry tutorials ROS.
