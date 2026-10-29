@@ -13,12 +13,13 @@
 // limitations under the License.
 
 #include <chrono>
+#include <cmath>
 #include <functional>
 #include <memory>
 
 #include "geometry_msgs/msg/transform_stamped.hpp"
 #include "rclcpp/rclcpp.hpp"
-#include "tf2_ros/transform_broadcaster.h"
+#include "tf2_ros/transform_broadcaster.hpp"
 
 using namespace std::chrono_literals;
 
@@ -30,7 +31,7 @@ public:
   DynamicFrameBroadcaster()
   : Node("dynamic_frame_tf2_broadcaster")
   {
-    tf_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(this);
+    tf_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(*this);
     timer_ = this->create_wall_timer(
       100ms, std::bind(&DynamicFrameBroadcaster::broadcast_timer_callback, this));
   }
