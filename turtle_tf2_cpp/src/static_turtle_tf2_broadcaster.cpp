@@ -12,12 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <cstdlib>
+#include <cstring>
 #include <memory>
 
 #include "geometry_msgs/msg/transform_stamped.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "tf2/LinearMath/Quaternion.hpp"
-#include "tf2_ros/static_transform_broadcaster.h"
+#include "tf2_ros/static_transform_broadcaster.hpp"
 
 class StaticFramePublisher : public rclcpp::Node
 {
@@ -25,7 +27,7 @@ public:
   explicit StaticFramePublisher(char * transformation[])
   : Node("static_turtle_tf2_broadcaster")
   {
-    tf_static_broadcaster_ = std::make_shared<tf2_ros::StaticTransformBroadcaster>(this);
+    tf_static_broadcaster_ = std::make_shared<tf2_ros::StaticTransformBroadcaster>(*this);
 
     // Publish static transforms once at startup
     this->make_transforms(transformation);
