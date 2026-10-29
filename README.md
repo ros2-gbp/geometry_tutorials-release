@@ -1,3 +1,29 @@
+## geometry_tutorials (lyrical) - 0.7.1-1
+
+The packages in the `geometry_tutorials` repository were released into the `lyrical` distro by running `/usr/bin/bloom-release --rosdistro lyrical --track lyrical geometry_tutorials` on `Thu, 29 Oct 2026 23:36:41 -0000`
+
+These packages were released:
+- `geometry_tutorials`
+- `turtle_tf2_cpp`
+- `turtle_tf2_py`
+
+Version of package(s) in repository `geometry_tutorials`:
+
+- upstream repository: https://github.com/ros/geometry_tutorials
+- release repository: https://github.com/ros2-gbp/geometry_tutorials-release.git
+- rosdistro version: `0.7.0-3`
+- old version: `0.7.0-3`
+- new version: `0.7.1-1`
+
+Versions of tools used:
+
+- bloom version: `0.14.4`
+- catkin_pkg version: `1.1.1`
+- rosdep version: `0.27.0`
+- rosdistro version: `1.1.0`
+- vcstools version: `0.1.42`
+
+
 ## geometry_tutorials (rolling) - 0.7.1-1
 
 The packages in the `geometry_tutorials` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --rosdistro rolling --track rolling geometry_tutorials` on `Thu, 29 Oct 2026 17:43:34 -0000`
